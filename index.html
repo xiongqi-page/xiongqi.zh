@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr" itemscope itemtype="https://schema.org/Game">
+  <head>
+    <title>熊棋 - 熊猫棋</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="robots" content="index, follow">
+    <meta name="description" content="熊棋（熊猫棋）完整规则。熊棋是一种源自象棋的抽象策略游戏，在8×8棋盘上进行，本文详细介绍棋子、走法及终局条件。">
+    <meta name="keywords" content="象棋, 熊棋, シォンチー, Xiongqi, 规则, 熊猫棋, 游戏">
+
+    <meta property="og:title" content="熊棋">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zh.xiongqi.page/">
+    <meta property="og:image" content="https://zh.xiongqi.page/img/xiongqi-starting-position.webp">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="熊棋 - 熊猫棋">
+    <meta name="twitter:image" content="https://zh.xiongqi.page/img/xiongqi-starting-position.webp">
+
+    <link rel="icon" type="image/svg+xml" sizes="any" href="favicon.svg">
+
+    <link rel="alternate" hreflang="en" href="https://en.xiongqi.page/">
+    <link rel="alternate" hreflang="fr" href="https://fr.xiongqi.page/">
+    <link rel="alternate" hreflang="ja" href="https://ja.xiongqi.page/">
+    <link rel="alternate" hreflang="th" href="https://th.xiongqi.page/">
+    <link rel="alternate" hreflang="zh" href="https://zh.xiongqi.page/">
+    <link rel="alternate" hreflang="x-default" href="https://xiongqi.page/">
+
+    <link rel="canonical" href="https://zh.xiongqi.page/">
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Game",
+        "@id": "https://zh.xiongqi.page/#game",
+        "name": "熊棋 — 熊猫棋",
+        "alternateName": [
+          "熊棋",
+          "Xiongqi",
+          "Panda Chess"
+        ],
+        "description": "熊棋（熊猫棋）完整规则。熊棋是一种源自象棋的抽象策略游戏，在8×8棋盘上进行，本文详细介绍棋子、走法及终局条件。",
+        "keywords": "象棋, 熊棋, シォンチー, Xiongqi, 规则, 熊猫棋, 游戏, 中国象棋, 变体, 棋盘游戏",
+        "image": "https://zh.xiongqi.page/img/xiongqi-starting-position.webp",
+        "url": "https://zh.xiongqi.page/",
+        "inLanguage": "zh",
+        "numberOfPlayers": {
+          "@type": "QuantitativeValue",
+          "minValue": 2,
+          "maxValue": 2
+        },
+        "creator": {
+          "@type": "Person",
+          "name": "Cyril Veltin"
+        },
+        "license": "Public domain",
+        "isBasedOn": {
+          "@type": "ShortStory",
+          "name": "张之梦",
+          "url": "https://zh.xiongqi.page/dushi-chuanshuo/",
+          "inLanguage": "zh",
+          "author": {
+            "@type": "Person",
+            "name": "Cyril Veltin"
+          },
+          "license": "Public domain"
+        },
+        "sameAs": [
+          "https://xiongqi.page/",
+          "https://en.xiongqi.page/",
+          "https://fr.xiongqi.page/",
+          "https://th.xiongqi.page/",
+          "https://ja.xiongqi.page/"
+        ],
+        "datePublished": "2019-04-28"
+      }
+    </script>
+
+    <style>
+      header {
+        display: flex;
+        gap: 1em;
+      }
+
+      article figure,
+      header figure,
+      header p {
+        margin: 0;
+      }
+
+      article figure img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+      }
+
+      article figure figcaption {
+        font-size: 0.9rem;
+        margin-top: 0.5rem;
+      }
+
+      nav[aria-label="目录"] {
+        display: inline-block;
+        margin: 1em 0;
+        padding: 1em;
+        background: #ccc;
+        border-radius: 1em;
+      }
+
+      nav[aria-label="目录"] ol {
+        margin: 0;
+        padding-left: 1.5em;
+      }
+
+      nav[aria-label="目录"] li {
+        margin: 0.3em 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <figure>
+        <img src="favicon.svg" alt="熊棋标志" height="64" width="64">
+      </figure>
+
+      <p>
+        熊棋（熊猫棋）是一种源自象棋（中国象棋）的抽象策略游戏，适用于8×8棋盘。<br>
+        本文档描述了实现该游戏所需的完整且无歧义的规则。
+      </p>
+    </header>
+
+    <hr>
+
+    <main>
+      <article>
+        <h1>游戏规则</h1>
+
+        <nav aria-label="目录">
+          <strong>目录</strong>
+          <ol>
+            <li><a href="#jibenguize">基本概念</a></li>
+            <li><a href="#qipan-buju">棋盘与初始布局</a></li>
+            <li><a href="#yidong-chizi">移动与吃子原则</a></li>
+            <li><a href="#jiangjun-hefa">受攻击格、将军与着法合法性</a></li>
+            <li><a href="#shengbian">兵的升变</a></li>
+            <li><a href="#zhongjv">终局</a></li>
+          </ol>
+        </nav>
+
+        <section id="jibenguize">
+          <h2>1. 基本概念</h2>
+
+          <ul>
+            <li>游戏由两位棋手对弈：南方棋手和北方棋手。</li>
+            <li>南方棋手始终先行。</li>
+            <li>双方随后交替行棋，每次走一步。</li>
+            <li>一步棋是指按照下述规则移动己方的一枚棋子。</li>
+            <li>不存在"虚着"：轮到某方时，该方必须走一步合法的棋，否则对局结束。</li>
+            <li>熊棋的核心棋子是将（帅）：将被吃掉或无法防守时，对局结束。</li>
+          </ul>
+        </section>
+
+        <section id="qipan-buju">
+          <h2>2. 棋盘与初始布局</h2>
+
+          <section id="qipan">
+            <h3>2.1 棋盘</h3>
+
+            <ul>
+              <li>熊棋在8列8行（8×8）的棋盘上进行。</li>
+              <li>从南方棋手的视角，列从左到右以字母标记：a、b、c、d、e、f、g、h。</li>
+              <li>从南方棋手的视角，行从下到上以数字标记：1、2、3、4、5、6、7、8。</li>
+              <li>南方棋手占据靠近第1行的区域，北方棋手占据靠近第8行的区域。</li>
+              <li>"河界"位于第4行与第5行之间。</li>
+            </ul>
+          </section>
+
+          <section id="qizi">
+            <h3>2.2 棋子</h3>
+
+            <p>每方拥有以下棋子：</p>
+
+            <ul>
+              <li>将（帅）1枚</li>
+              <li>士（仕）1枚</li>
+              <li>车（俥）2枚</li>
+              <li>熊（雄）2枚</li>
+              <li>马（傌）2枚</li>
+              <li>炮（砲）2枚</li>
+              <li>卒（兵）8枚</li>
+            </ul>
+          </section>
+
+          <section id="chushi-buju">
+            <h3>2.3 初始布局</h3>
+
+            <p>双方的初始布局结构相同，呈镜像对称。</p>
+
+            <figure>
+              <img
+                src="img/xiongqi-starting-position.webp"
+                alt="初始布局图：每方第一行从左到右依次为：车、马、熊、士、将、熊、马、车。第二行在c列和f列各有一枚炮。第三行为八枚兵。"
+                height="769"
+                width="768">
+
+              <figcaption>熊棋初始布局</figcaption>
+            </figure>
+
+            <section id="nanfang">
+              <h4>2.3.1 南方</h4>
+
+              <ul>
+                <li>第1行（a1至h1）：俥、傌、雄、仕、帥、雄、傌、俥。</li>
+                <li>第2行：c2和f2各有一枚炮；其余格为空。</li>
+                <li>第3行：每格一枚兵（a3至h3）。</li>
+              </ul>
+            </section>
+
+            <section id="beifang">
+              <h4>2.3.2 北方</h4>
+
+              <ul>
+                <li>第8行（a8至h8）：車、馬、熊、士、將、熊、馬、車。</li>
+                <li>第7行：c7和f7各有一枚砲；其余格为空。</li>
+                <li>第6行：每格一枚卒（a6至h6）。</li>
+              </ul>
+            </section>
+          </section>
+
+          <section id="qizi-biaoji">
+            <h3>2.4 棋子标记规范</h3>
+
+            <p>
+              按照惯例，每种棋子对应一个汉字和一个拉丁字母缩写，
+              南方用大写字母，北方用小写字母。
+              这些规范用于某些记谱系统和程序实现，
+              但不影响走法规则。
+            </p>
+
+            <table>
+              <caption class="visually-hidden">各方棋子标记</caption>
+              <thead>
+                <tr>
+                  <th rowspan="2" scope="col">棋子类型</th>
+                  <th colspan="2" scope="colgroup">南方</th>
+                  <th colspan="2" scope="colgroup">北方</th>
+                </tr>
+                <tr>
+                  <th scope="col">汉字</th>
+                  <th scope="col"><abbr title="缩写">缩写</abbr></th>
+                  <th scope="col">汉字</th>
+                  <th scope="col"><abbr title="缩写">缩写</abbr></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">士</th>
+                  <td>仕</td>
+                  <td><code>A</code></td>
+                  <td>士</td>
+                  <td><code>a</code></td>
+                </tr>
+                <tr>
+                  <th scope="row">熊</th>
+                  <td>雄</td>
+                  <td><code>B</code></td>
+                  <td>熊</td>
+                  <td><code>b</code></td>
+                </tr>
+                <tr>
+                  <th scope="row">炮</th>
+                  <td>炮</td>
+                  <td><code>C</code></td>
+                  <td>砲</td>
+                  <td><code>c</code></td>
+                </tr>
+                <tr>
+                  <th scope="row">妃</th>
+                  <td>妃</td>
+                  <td><code>E</code></td>
+                  <td>騛</td>
+                  <td><code>e</code></td>
+                </tr>
+                <tr>
+                  <th scope="row">将</th>
+                  <td>帥</td>
+                  <td><code>G</code></td>
+                  <td>將</td>
+                  <td><code>g</code></td>
+                </tr>
+                <tr>
+                  <th scope="row">马</th>
+                  <td>傌</td>
+                  <td><code>H</code></td>
+                  <td>馬</td>
+                  <td><code>h</code></td>
+                </tr>
+                <tr>
+                  <th scope="row">车</th>
+                  <td>俥</td>
+                  <td><code>R</code></td>
+                  <td>車</td>
+                  <td><code>r</code></td>
+                </tr>
+                <tr>
+                  <th scope="row">兵</th>
+                  <td>兵</td>
+                  <td><code>S</code></td>
+                  <td>卒</td>
+                  <td><code>s</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+        </section>
+
+        <section id="yidong-chizi">
+          <h2>3. 移动与吃子原则</h2>
+
+          <ul>
+            <li>轮到某方时，该方移动己方的一枚棋子。</li>
+            <li>移动是指从起始格到达目标格。</li>
+            <li>棋子不能移动到己方棋子占据的格子上。</li>
+            <li>如果目标格有敌方棋子，则将其吃掉并移出棋盘。</li>
+            <li>除非另有说明，棋子不能"跳过"其他棋子：所有中间格必须为空。</li>
+            <li>如果一步棋使己方的将处于被将军状态，则该着法不合法。</li>
+          </ul>
+
+          <section id="jiang">
+            <h3>3.1 将（帅）</h3>
+
+            <ul>
+              <li>将沿水平或垂直方向移动一格。</li>
+              <li>将通过移动到相邻的敌方棋子所在格来吃子。</li>
+              <li>将不受宫的限制：可以自由移动到棋盘上任何合法的格子。</li>
+              <li>将永远不能停在被敌方攻击的格子上。</li>
+            </ul>
+          </section>
+
+          <section id="shi">
+            <h3>3.2 士（仕）</h3>
+
+            <ul>
+              <li>士沿对角线方向移动一格。</li>
+              <li>士通过移动到对角相邻的敌方棋子所在格来吃子。</li>
+              <li>士不受宫的限制：可以自由移动到棋盘上任何合法的格子。</li>
+            </ul>
+          </section>
+
+          <section id="che">
+            <h3>3.3 车（俥）</h3>
+
+            <ul>
+              <li>车沿水平或垂直方向移动任意格数。</li>
+              <li>车不能跳过其他棋子。</li>
+              <li>车通过移动到同一行或同一列上敌方棋子所在格来吃子。</li>
+            </ul>
+          </section>
+
+          <section id="xiong">
+            <h3>3.4 熊（雄）</h3>
+
+            <ul>
+              <li>熊沿对角线方向移动任意格数。</li>
+              <li>熊不能跳过其他棋子。</li>
+              <li>熊通过移动到同一对角线上敌方棋子所在格来吃子。</li>
+            </ul>
+          </section>
+
+          <section id="ma">
+            <h3>3.5 马（傌）</h3>
+
+            <ul>
+              <li>马的移动分两步进行：
+                <ol>
+                  <li>从起始格沿直线方向（上、下、左或右）移动一格；</li>
+                  <li>然后从该中间位置沿对角线向外移动一格。</li>
+                </ol>
+              </li>
+              <li>马不能跳跃：相邻的直线格（马腿）必须为空。如果该格被占据，则该方向的移动被阻挡。</li>
+              <li>目标格必须为空或被敌方棋子占据，后者将被吃掉。</li>
+            </ul>
+          </section>
+
+          <section id="pao">
+            <h3>3.6 炮（砲）</h3>
+
+            <dl>
+              <dt>不吃子时的移动</dt>
+              <dd>
+                <ul>
+                  <li>炮的移动方式与车相同：沿水平或垂直方向移动任意格数。</li>
+                  <li>所有中间格必须为空。</li>
+                </ul>
+              </dd>
+
+              <dt>吃子</dt>
+              <dd>
+                <ul>
+                  <li>炮必须与目标敌方棋子在同一行或同一列。</li>
+                  <li>炮与目标之间必须恰好有一枚棋子（任何一方的）：该棋子称为"炮架"。</li>
+                  <li>炮架与目标之间不能有其他棋子。</li>
+                  <li>炮直接移动到目标格并将其吃掉。</li>
+                </ul>
+              </dd>
+            </dl>
+
+            <p>炮不能在没有炮架的情况下吃子，也不能在炮与目标之间有多于一枚棋子时吃子。</p>
+          </section>
+
+          <section id="fei">
+            <h3>3.7 妃（騛）</h3>
+
+            <p>妃结合两种不同的移动方式：车的走法和骑士的走法。</p>
+
+            <ul>
+              <li>
+                每一步，妃可选择以下两种模式之一：
+
+                <dl>
+                  <dt>车模式</dt>
+                  <dd>
+                    <ul>
+                      <li>妃沿水平或垂直方向移动任意格数。</li>
+                      <li>不能跳过其他棋子。</li>
+                      <li>通过移动到敌方棋子所在格来吃子。</li>
+                    </ul>
+                  </dd>
+
+                  <dt>骑士模式</dt>
+                  <dd>
+                    <ul>
+                      <li>妃走"L"形：沿直线方向移动两格，然后垂直方向移动一格。</li>
+                      <li>可以跳过中间的棋子。</li>
+                      <li>目标格必须为空或被敌方棋子占据，后者将被吃掉。</li>
+                    </ul>
+                  </dd>
+                </dl>
+              </li>
+
+              <li>妃每步只能使用一种模式；不能组合使用。</li>
+
+              <li>判断受攻击格（特别是将军情况）时，需考虑两种模式可达的所有格子。</li>
+            </ul>
+            <p>
+              <strong>注：</strong>"骑士模式"与3.5节中马的走法不同，区别在于骑士模式可以<em>跳过</em>一枚棋子。
+            </p>
+          </section>
+
+          <section id="bing">
+            <h3>3.8 兵（卒）</h3>
+
+            <p>双方的兵朝相反方向前进：</p>
+
+            <ul>
+              <li>南方的兵向北前进（行数递增：从第3行向第8行）。</li>
+              <li>北方的卒向南前进（行数递减：从第6行向第1行）。</li>
+            </ul>
+
+            <section id="bing-guohe-qian">
+              <h4>3.8.1 过河前</h4>
+
+              <ul>
+                <li>南方的兵在第1至第4行时为"未过河"状态。</li>
+                <li>北方的卒在第5至第8行时为"未过河"状态。</li>
+                <li>过河前，兵：
+                  <ul>
+                    <li>只能向前移动一格；</li>
+                    <li>以同样方式吃子（向前一格）；</li>
+                    <li>不能后退，也不能横向移动。</li>
+                  </ul>
+                </li>
+              </ul>
+            </section>
+
+            <section id="bing-guohe-hou">
+              <h4>3.8.2 过河后</h4>
+
+              <ul>
+                <li>南方的兵到达第5行或更远时为"已过河"。</li>
+                <li>北方的卒到达第4行或更近时为"已过河"。</li>
+                <li>过河后，兵：
+                  <ul>
+                    <li>保留向前移动一格的能力；</li>
+                    <li>获得横向移动一格的能力（左或右）；</li>
+                    <li>可向前或横向吃子；</li>
+                    <li>仍然不能后退。</li>
+                  </ul>
+                </li>
+              </ul>
+            </section>
+          </section>
+        </section>
+
+        <section id="jiangjun-hefa">
+          <h2>4. 受攻击格、将军与着法合法性</h2>
+
+          <section id="shougongji-ge">
+            <h3>4.1 受攻击格</h3>
+
+            <p>
+              如果按照走法规则（3.1至3.8节）并考虑障碍物，
+              某方的一枚棋子可以移动到某格吃掉假想的敌方棋子，
+              则该格被称为受该方攻击。
+            </p>
+
+            <ul>
+              <li>判断某格是否受攻击时，不考虑该移动是否会使己方的将暴露于将军（牵制不会使某格"不受攻击"）。</li>
+              <li>兵的攻击方式与其吃子方式相同：
+                <ul>
+                  <li>过河前：向前一格；</li>
+                  <li>过河后：向前或横向一格。</li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+
+          <section id="jiangjun">
+            <h3>4.2 将军</h3>
+
+            <ul>
+              <li>如果将所在的格子受到至少一枚敌方棋子的攻击，则将被将军。</li>
+              <li>使己方的将处于被将军状态的着法不合法。</li>
+              <li>因此，棋手不能：
+                <ul>
+                  <li>无视现有的将军；</li>
+                  <li>主动将己方的将移到受攻击的格子上；</li>
+                  <li>移动保护将的棋子使将暴露于攻击。</li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+
+          <section id="yingjiangjun">
+            <h3>4.3 应将</h3>
+
+            <p>
+              当棋手在回合开始时将处于被将军状态，必须走一步解除将军的棋。可能的应对方式有三种：
+            </p>
+
+            <ul>
+              <li>将移动到不受攻击的格子；</li>
+              <li>吃掉正在将军的棋子；</li>
+              <li>用一枚棋子挡在攻击者与将之间。</li>
+            </ul>
+
+            <p>
+              如果这三种应对都不可行，则将被将死（见第6.1节）。
+            </p>
+          </section>
+
+          <section id="fouding-guize">
+            <h3>4.4 否定规则</h3>
+
+            <ul>
+              <li>没有王车易位。</li>
+              <li>不能打入被吃的棋子。</li>
+            </ul>
+          </section>
+
+          <section id="duimian">
+            <h3>4.5 将帅不能对面</h3>
+
+            <p>当以下条件同时满足时，两将被称为"对面"：</p>
+
+            <ul>
+              <li>两将在同一列；</li>
+              <li>两将之间没有任何棋子；</li>
+              <li>南方的帅在北方的將所在行的下方。</li>
+            </ul>
+
+            <p>
+              这种局面是禁止的。任何合法着法都不能导致这种局面。
+            </p>
+          </section>
+        </section>
+
+        <section id="shengbian">
+          <h2>5. 兵的升变</h2>
+
+          <ul>
+            <li>当兵以合法着法到达对方底线（南方到第8行，北方到第1行）时，棋手可以选择将其升变。</li>
+
+            <li>升变是可选的：棋手可以保持兵不变或立即升变。</li>
+
+            <li>已在底线的兵可以稍后升变，条件是棋手刚刚移动了该兵。这允许棋手将升变决定推迟到合适的时机。</li>
+
+            <li>升变时，兵被移除并在同一格上替换为棋手选择的以下棋子之一：
+              <ul>
+                <li>妃，</li>
+                <li>士，</li>
+                <li>炮，</li>
+                <li>车，</li>
+                <li>熊，</li>
+                <li>马。</li>
+              </ul>
+            </li>
+
+            <li>不能升变为将。</li>
+
+            <li>升变的选择不受棋盘上现有棋子或已被吃棋子的限制。因此棋手可以拥有多枚同类型的棋子。</li>
+          </ul>
+        </section>
+
+        <section id="zhongjv">
+          <h2>6. 终局</h2>
+
+          <section id="jiangsi">
+            <h3>6.1 将死获胜</h3>
+
+            <p>当以下条件同时满足时，一方被将死：</p>
+
+            <ul>
+              <li>该方的将正被将军；</li>
+              <li>且没有任何合法着法可以解除将军。</li>
+            </ul>
+
+            <p>被将死的一方输棋；对方获胜。</p>
+          </section>
+
+          <section id="kunbi">
+            <h3>6.2 困毙</h3>
+
+            <p>困毙发生于以下情况：</p>
+
+            <ul>
+              <li>轮到某方行棋；</li>
+              <li>该方没有任何合法着法；</li>
+              <li>且该方的将未被将军。</li>
+            </ul>
+
+            <p>在熊棋中，困毙导致无法行棋方输棋。</p>
+          </section>
+
+          <section id="sanfu-hejv">
+            <h3>6.3 三次重复和棋</h3>
+
+            <p>当同一局面在对局中第三次出现时，视为重复。</p>
+
+            <p>两个局面相同，当且仅当：</p>
+
+            <ul>
+              <li>相同的棋子占据相同的格子；</li>
+              <li>且轮到同一方行棋。</li>
+            </ul>
+
+            <p>当某局面第三次出现时，对局判和。</p>
+          </section>
+
+          <section id="ziliao-buzu">
+            <h3>6.4 子力不足和棋</h3>
+
+            <p>
+              当双方都没有足够的子力将死对方时，
+              无论如何走棋，都会出现子力不足和棋。
+              这包括棋盘上只剩下两将的局面。
+            </p>
+
+            <p>这种局面判为和棋。</p>
+          </section>
+
+          <section id="qita-zhongjv">
+            <h3>6.5 其他情况</h3>
+
+            <p>
+              除上述情况外，对局还可能因认输、超时或双方同意和棋而结束。
+            </p>
+          </section>
+        </section>
+      </article>
+    </main>
+
+    <hr>
+
+    <nav aria-label="语言选择">
+      <p>其他语言版本：</p>
+
+      <ul>
+        <li><a title="切换至英语" href="https://en.xiongqi.page/" lang="en">English</a></li>
+        <li><a title="切换至法语" href="https://fr.xiongqi.page/" lang="fr">Français</a></li>
+        <li><a title="切换至泰语" href="https://th.xiongqi.page/" lang="th">ภาษาไทย</a></li>
+        <li><a title="切换至日语" href="https://ja.xiongqi.page/" lang="ja">日本語</a></li>
+      </ul>
+    </nav>
+
+    <hr>
+
+    <footer>
+      <p>
+        本游戏源于<a href="dushi-chuanshuo/" title="张之梦" itemprop="isBasedOn" itemscope itemtype="https://schema.org/ShortStory"><span itemprop="name">一位名叫张的农夫的奇异梦境</span></a>。
+        其规则、名称和标志均属于公有领域：
+        任何人皆可自由使用、改编和传播，无需事先授权。
+      </p>
+    </footer>
+  </body>
+</html>
