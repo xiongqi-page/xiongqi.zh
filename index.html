@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr" itemscope itemtype="https://schema.org/Game">
+  <head>
+    <title>熊棋 - 熊猫象棋</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="robots" content="index, follow">
+
+    <meta name="description" content="熊棋（熊猫象棋）完整规则。一种源自象棋的抽象策略游戏，在8×8棋盘上进行：棋子、走法、升变、将帅照面及终局条件。">
+    <meta name="keywords" content="象棋, 熊棋, 规则, 熊猫象棋, 游戏, 中国象棋, 变体, 棋盘游戏">
+
+    <meta property="og:site_name" content="熊棋">
+    <meta property="og:title" content="熊棋 - 熊猫象棋">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zh.xiongqi.page/">
+    <meta property="og:description" content="熊棋（熊猫象棋）完整规则：8×8棋盘、棋子、走法、将军（参考信息）、升变、龙及终局。">
+    <meta property="og:image" content="https://zh.xiongqi.page/img/xiongqi-starting-position.webp">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="熊棋 - 熊猫象棋">
+    <meta name="twitter:description" content="熊棋（熊猫象棋）完整规则：8×8棋盘、棋子、走法、升变、龙及终局。">
+    <meta name="twitter:image" content="https://zh.xiongqi.page/img/xiongqi-starting-position.webp">
+
+    <link rel="icon" type="image/svg+xml" sizes="any" href="favicon.svg">
+
+    <link rel="alternate" hreflang="en" href="https://en.xiongqi.page/">
+    <link rel="alternate" hreflang="fr" href="https://fr.xiongqi.page/">
+    <link rel="alternate" hreflang="ja" href="https://ja.xiongqi.page/">
+    <link rel="alternate" hreflang="th" href="https://th.xiongqi.page/">
+    <link rel="alternate" hreflang="zh" href="https://zh.xiongqi.page/">
+    <link rel="alternate" hreflang="x-default" href="https://xiongqi.page/">
+
+    <link rel="canonical" href="https://zh.xiongqi.page/">
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Game",
+        "@id": "https://zh.xiongqi.page/#game",
+        "name": "熊棋 — 熊猫象棋",
+        "alternateName": [
+          "熊棋",
+          "Xiongqi",
+          "熊猫象棋"
+        ],
+        "description": "熊棋（熊猫象棋）完整规则。一种源自象棋的抽象策略游戏，在8×8棋盘上进行：棋子、走法、升变、将帅照面及终局条件。",
+        "keywords": "象棋, 熊棋, 规则, 熊猫象棋, 游戏, 中国象棋, 变体, 棋盘游戏",
+        "image": "https://zh.xiongqi.page/img/xiongqi-starting-position.webp",
+        "url": "https://zh.xiongqi.page/",
+        "inLanguage": "zh",
+        "numberOfPlayers": {
+          "@type": "QuantitativeValue",
+          "minValue": 2,
+          "maxValue": 2
+        },
+        "creator": {
+          "@type": "Person",
+          "name": "Cyril Veltin"
+        },
+        "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "isBasedOn": {
+          "@type": "ShortStory",
+          "name": "魏的梦",
+          "url": "https://zh.xiongqi.page/dushi-chuanshuo/",
+          "inLanguage": "zh",
+          "author": {
+            "@type": "Person",
+            "name": "Cyril Veltin"
+          },
+          "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+        },
+        "sameAs": [
+          "https://xiongqi.page/",
+          "https://en.xiongqi.page/",
+          "https://fr.xiongqi.page/",
+          "https://th.xiongqi.page/",
+          "https://ja.xiongqi.page/"
+        ],
+        "datePublished": "2019-04-28"
+      }
+    </script>
+
+    <style>
+      header {
+        display: flex;
+        gap: 1em;
+        align-items: flex-start;
+      }
+
+      article figure,
+      header figure,
+      header p {
+        margin: 0;
+      }
+
+      article figure img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+      }
+
+      article figure figcaption {
+        font-size: 0.9rem;
+        margin-top: 0.5rem;
+      }
+
+      nav[aria-label="目录"] {
+        display: inline-block;
+        margin: 1em 0;
+        padding: 1em;
+        background: #ccc;
+        border-radius: 1em;
+      }
+
+      nav[aria-label="目录"] ol {
+        margin: 0;
+        padding-left: 1.5em;
+      }
+
+      nav[aria-label="目录"] li {
+        margin: 0.3em 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <figure>
+        <img src="favicon.svg" alt="熊棋标志" height="64" width="64">
+      </figure>
+
+      <p>
+        熊棋，又称<q>熊猫象棋</q>，是一种源自象棋（中国象棋）的抽象策略游戏，
+        适配于8×8棋盘。<br>
+        本文档描述了进行熊棋对弈所需的完整且明确的规则。
+      </p>
+    </header>
+
+    <hr>
+
+    <main>
+      <article>
+        <h1>游戏规则</h1>
+
+        <nav aria-label="目录">
+          <h2>目录</h2>
+          <ol>
+            <li><a href="#jiben-gainian">基本概念</a></li>
+            <li><a href="#qipan-he-chushipaizhi">棋盘与初始布局</a></li>
+            <li><a href="#xingqi-chiqi-he-qizi">行棋、吃子与棋子</a></li>
+            <li><a href="#zhaomian-he-long">将帅照面与龙</a></li>
+            <li><a href="#shengbian">兵的升变</a></li>
+            <li><a href="#zhongju">终局</a></li>
+          </ol>
+        </nav>
+
+        <section id="jiben-gainian">
+          <h2>1. 基本概念</h2>
+
+          <ul>
+            <li>本游戏由两方对弈：南方与北方。</li>
+            <li>南方始终先行。</li>
+            <li>此后双方轮流走棋，每次一步。</li>
+            <li>一步棋是按照下述规则移动己方的一枚棋子。</li>
+            <li>每方的终极棋子是其将（帅），若发生变化则为龙。</li>
+            <li>吃掉终极棋子即刻结束对局。</li>
+          </ul>
+
+          <h3>1.1 将军与将死（参考信息）</h3>
+
+          <p>
+            熊棋中存在<strong>将军</strong>与<strong>将死</strong>的概念，
+            但这些概念仅为<strong>参考信息</strong>：
+            它们不限制允许的着法。
+          </p>
+
+          <ul>
+            <li>
+              <strong>将军</strong>：一方的终极棋子（将或龙）
+              被对方至少一枚棋子攻击的局面。
+              宣布<q>将军</q>是礼貌的表现，但非强制性。
+            </li>
+            <li>
+              <strong>将死</strong>：无法解除的将军局面。
+              被将死的一方处于败势；
+              按照惯例，应主动认输而非等待被吃。
+            </li>
+          </ul>
+
+          <p>
+            将己方的终极棋子置于将军状态或保持将军状态的着法并不被禁止。
+            这样的着法仍然合规，但对方随即可以吃掉该终极棋子
+            并立即获胜。
+          </p>
+
+          <h3>1.2 合规着法的定义</h3>
+
+          <p>
+            在本文档中，<strong>合规着法</strong>是指符合以下条件的着法：
+            (1) 行棋与吃子规则，
+            (2) 照面与升变规则，
+            以及 (3) 禁止重复。
+            将军状态不包含在此定义中。
+          </p>
+        </section>
+
+        <section id="qipan-he-chushipaizhi">
+          <h2>2. 棋盘与初始布局</h2>
+
+          <section id="qipan">
+            <h3>2.1 棋盘</h3>
+
+            <ul>
+              <li>熊棋在8列×8行（8×8）的棋盘上进行。</li>
+              <li>从南方视角，列从左到右命名为：a、b、c、d、e、f、g、h。</li>
+              <li>从南方视角，行从下到上编号为：1、2、3、4、5、6、7、8。</li>
+              <li>南方占据靠近第1行的区域，北方占据靠近第8行的区域。</li>
+              <li><q>河界</q>位于第4行与第5行之间。</li>
+            </ul>
+          </section>
+
+          <section id="qizi">
+            <h3>2.2 棋子</h3>
+
+            <p>开局时，每方拥有以下棋子：</p>
+
+            <ul>
+              <li>将 1枚</li>
+              <li>士 1枚</li>
+              <li>车 2枚</li>
+              <li>熊 2枚</li>
+              <li>马 2枚</li>
+              <li>炮 2枚</li>
+              <li>兵 8枚</li>
+            </ul>
+
+            <p>
+              <strong>龙</strong>不在初始布局中：仅当双方的将照面时才会出现。
+              <strong>妃</strong>不在初始布局中：仅通过兵的升变出现。
+            </p>
+          </section>
+
+          <section id="chushipaizhi">
+            <h3>2.3 初始布局</h3>
+
+            <p>初始布局对双方结构相同，呈镜像排列。</p>
+
+            <figure>
+              <img
+                src="img/xiongqi-starting-position.webp"
+                alt="初始布局图：每方第一行从左到右为：车、马、熊、士、将、熊、马、车。第二行c位和f位各有一炮。第三行八枚兵一字排开。"
+                height="769"
+                width="768">
+              <figcaption>熊棋初始布局</figcaption>
+            </figure>
+
+            <section id="nanfang">
+              <h4>2.3.1 南方</h4>
+
+              <ul>
+                <li>第1行（a1至h1）：车、马、熊、士、将、熊、马、车。</li>
+                <li>第2行：c2有炮，f2有炮，其余格为空。</li>
+                <li>第3行：每格一兵（a3至h3）。</li>
+              </ul>
+            </section>
+
+            <section id="beifang">
+              <h4>2.3.2 北方</h4>
+
+              <ul>
+                <li>第8行（a8至h8）：车、马、熊、士、将、熊、马、车。</li>
+                <li>第7行：c7有炮，f7有炮，其余格为空。</li>
+                <li>第6行：每格一兵（a6至h6）。</li>
+              </ul>
+            </section>
+          </section>
+
+          <section id="qizi-mingming">
+            <h3>2.4 棋子命名规则</h3>
+
+            <p>
+              按照惯例，每种棋子根据所属方配有不同的汉字和拉丁字母缩写
+              （南方用大写，北方用小写）。
+              这些规则便于记谱和程序实现，但不改变游戏规则。
+            </p>
+
+            <table>
+              <caption>各方棋子命名</caption>
+              <thead>
+                <tr>
+                  <th rowspan="2" scope="col">棋子类型</th>
+                  <th colspan="2" scope="colgroup">南方</th>
+                  <th colspan="2" scope="colgroup">北方</th>
+                </tr>
+                <tr>
+                  <th scope="col">汉字</th>
+                  <th scope="col"><abbr title="缩写">缩</abbr></th>
+                  <th scope="col">汉字</th>
+                  <th scope="col"><abbr title="缩写">缩</abbr></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">士</th>
+                  <td>仕</td>
+                  <td><code>A</code></td>
+                  <td>士</td>
+                  <td><code>a</code></td>
+                </tr>
+                <tr>
+                  <th scope="row">熊</th>
+                  <td>雄</td>
+                  <td><code>B</code></td>
+                  <td>熊</td>
+                  <td><code>b</code></td>
+                </tr>
+                <tr>
+                  <th scope="row">炮</th>
+                  <td>炮</td>
+                  <td><code>C</code></td>
+                  <td>砲</td>
+                  <td><code>c</code></td>
+                </tr>
+                <tr>
+                  <th scope="row">龙</th>
+                  <td>鳳</td>
+                  <td><code>D</code></td>
+                  <td>龍</td>
+                  <td><code>d</code></td>
+                </tr>
+                <tr>
+                  <th scope="row">妃</th>
+                  <td>妃</td>
+                  <td><code>E</code></td>
+                  <td>騛</td>
+                  <td><code>e</code></td>
+                </tr>
+                <tr>
+                  <th scope="row">将</th>
+                  <td>帥</td>
+                  <td><code>G</code></td>
+                  <td>將</td>
+                  <td><code>g</code></td>
+                </tr>
+                <tr>
+                  <th scope="row">马</th>
+                  <td>傌</td>
+                  <td><code>H</code></td>
+                  <td>馬</td>
+                  <td><code>h</code></td>
+                </tr>
+                <tr>
+                  <th scope="row">车</th>
+                  <td>俥</td>
+                  <td><code>R</code></td>
+                  <td>車</td>
+                  <td><code>r</code></td>
+                </tr>
+                <tr>
+                  <th scope="row">兵</th>
+                  <td>兵</td>
+                  <td><code>S</code></td>
+                  <td>卒</td>
+                  <td><code>s</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+        </section>
+
+        <section id="xingqi-chiqi-he-qizi">
+          <h2>3. 行棋、吃子与棋子</h2>
+
+          <section id="jiben-yuanze">
+            <h3>3.1 基本原则</h3>
+
+            <ul>
+              <li>轮到己方时，走动己方的一枚棋子。</li>
+              <li>一步棋将棋子从起始格移动到目标格。</li>
+              <li>目标格必须为空或有对方棋子占据。</li>
+              <li>棋子不能移动到己方棋子占据的格子。</li>
+              <li>
+                若目标格有对方棋子，则该棋子被吃：
+                从棋盘上移除，移动的棋子占据其位置。
+              </li>
+              <li>
+                除非在棋子说明中另有规定，棋子不能越子：
+                起始格与目标格之间的所有格子必须为空。
+              </li>
+            </ul>
+          </section>
+
+          <section id="qizi-xingqi">
+            <h3>3.2 棋子</h3>
+
+            <p>
+              以下各节描述每种棋子的行棋与吃子规则。
+              除非明确说明，棋子按其正常规则移动到有对方棋子的格子即可吃子。
+            </p>
+
+            <section id="shi">
+              <h4>3.2.1 士</h4>
+
+              <ul>
+                <li>士沿对角线移动一格。</li>
+                <li>可移动到棋盘上的任意格子。</li>
+              </ul>
+            </section>
+
+            <section id="xiong">
+              <h4>3.2.2 熊</h4>
+
+              <ul>
+                <li>熊沿对角线移动任意格数。</li>
+                <li>不能越子：途经的所有格子必须为空。</li>
+              </ul>
+            </section>
+
+            <section id="pao">
+              <h4>3.2.3 炮</h4>
+
+              <dl>
+                <dt>不吃子的移动</dt>
+                <dd>
+                  <ul>
+                    <li>炮沿横向或纵向移动任意格数。</li>
+                    <li>途经的所有格子必须为空。</li>
+                  </ul>
+                </dd>
+
+                <dt>吃子</dt>
+                <dd>
+                  <ul>
+                    <li>炮必须与目标在同一行或同一列。</li>
+                    <li>
+                      炮与目标之间必须<strong>恰好有一枚</strong>棋子（任何一方均可），
+                      称为<q>炮架</q>。
+                    </li>
+                    <li>炮架与目标之间不得有其他棋子。</li>
+                    <li>炮通过越过炮架移动到目标格来吃子。</li>
+                  </ul>
+                </dd>
+              </dl>
+
+              <p>
+                炮在没有炮架时不能吃子，炮与目标之间有两枚或更多棋子时也不能吃子。
+              </p>
+            </section>
+
+            <section id="long">
+              <h4>3.2.4 龙</h4>
+
+              <p>
+                龙（又称<q>飞将</q>）仅在双方的将照面后出现。
+                一旦出现，即永久取代该方的将，成为终极棋子。
+              </p>
+
+              <dl>
+                <dt>不吃子的移动</dt>
+                <dd>
+                  <ul>
+                    <li>龙沿横向或纵向移动一格。</li>
+                  </ul>
+                </dd>
+
+                <dt>吃子</dt>
+                <dd>
+                  <ul>
+                    <li>龙在其所在行或列的任意距离处吃子。</li>
+                    <li>不能越子：龙与目标之间的所有格子必须为空。</li>
+                  </ul>
+                </dd>
+              </dl>
+            </section>
+
+            <section id="fei">
+              <h4>3.2.5 妃</h4>
+
+              <p>
+                妃不在初始布局中：通过升变出现。
+                每步棋选择一种移动方式。
+              </p>
+
+              <dl>
+                <dt>车式</dt>
+                <dd>
+                  <ul>
+                    <li>沿横向或纵向移动任意格数。</li>
+                    <li>不能越子：途经的所有格子必须为空。</li>
+                  </ul>
+                </dd>
+
+                <dt>骑士式</dt>
+                <dd>
+                  <ul>
+                    <li><q>L</q>形移动：沿一个正交方向移动两格，然后垂直方向移动一格。</li>
+                    <li>此方式允许越子。</li>
+                  </ul>
+                </dd>
+              </dl>
+
+              <p>
+                妃的<q>骑士</q>式与马的走法不同，因为马可能被蹩腿。
+              </p>
+            </section>
+
+            <section id="jiang">
+              <h4>3.2.6 将</h4>
+
+              <ul>
+                <li>将沿横向或纵向移动一格。</li>
+                <li>可移动到棋盘上的任意格子。</li>
+                <li>将在未被龙取代前是终极棋子。</li>
+              </ul>
+            </section>
+
+            <section id="ma">
+              <h4>3.2.7 马</h4>
+
+              <ul>
+                <li>
+                  马分两步移动：
+                  <ol>
+                    <li>沿一个正交方向（上、下、左、右）移动一格；</li>
+                    <li>然后沿对角向外移动一格。</li>
+                  </ol>
+                </li>
+                <li>
+                  马不能越子：相邻的正交格（马的<q>蹩腿点</q>）必须为空。
+                  若该格被占据，则该方向的移动被阻挡。
+                </li>
+              </ul>
+            </section>
+
+            <section id="che">
+              <h4>3.2.8 车</h4>
+
+              <ul>
+                <li>车沿横向或纵向移动任意格数。</li>
+                <li>不能越子：途经的所有格子必须为空。</li>
+              </ul>
+            </section>
+
+            <section id="bing">
+              <h4>3.2.9 兵</h4>
+
+              <p>各方的兵朝相反方向前进：</p>
+
+              <ul>
+                <li>南方的兵向北前进（行数增加：从第3行向第8行）。</li>
+                <li>北方的兵向南前进（行数减少：从第6行向第1行）。</li>
+              </ul>
+
+              <section id="bing-guohe-qian">
+                <h5>3.2.9.1 过河前</h5>
+
+                <ul>
+                  <li>南方的兵在第1至第4行时为<q>过河前</q>。</li>
+                  <li>北方的兵在第5至第8行时为<q>过河前</q>。</li>
+                  <li>
+                    过河前，兵：
+                    <ul>
+                      <li>向前移动一格；</li>
+                      <li>以同样方式吃子；</li>
+                      <li>不能后退或横向移动。</li>
+                    </ul>
+                  </li>
+                </ul>
+              </section>
+
+              <section id="bing-guohe-hou">
+                <h5>3.2.9.2 过河后</h5>
+
+                <ul>
+                  <li>南方的兵到达第5行或更远时即为过河。</li>
+                  <li>北方的兵到达第4行或更近时即为过河。</li>
+                  <li>
+                    过河后，兵：
+                    <ul>
+                      <li>保持向前移动一格；</li>
+                      <li>增加横向移动一格（左或右）；</li>
+                      <li>可向前或横向吃子；</li>
+                      <li>仍不能后退。</li>
+                    </ul>
+                  </li>
+                </ul>
+              </section>
+            </section>
+          </section>
+        </section>
+
+        <section id="zhaomian-he-long">
+          <h2>4. 将帅照面与龙</h2>
+
+          <p>双方的将被称为<q>照面</q>当：</p>
+
+          <ul>
+            <li>它们在同一列；</li>
+            <li>它们之间没有棋子；</li>
+            <li>南方的将在北方的将所在行的下方。</li>
+          </ul>
+
+          <p>
+            <strong>一旦出现此局面，双方的将立即变为龙。</strong>
+          </p>
+
+          <ul>
+            <li>变化适用于双方，即使只有一方走了造成照面的棋。</li>
+            <li>龙永久取代该方的将。</li>
+            <li>各方的终极棋子随即变为龙。</li>
+          </ul>
+        </section>
+
+        <section id="shengbian">
+          <h2>5. 兵的升变</h2>
+
+          <ul>
+            <li>
+              当兵在对方底线（南方为第8行，北方为第1行）完成移动时，
+              棋手可选择升变。
+            </li>
+            <li>升变是可选的：棋手可立即升变或保持兵不变。</li>
+            <li>已在底线的兵可在之后升变，前提是棋手刚刚移动了该兵。</li>
+            <li>
+              升变时，兵被移除并在同一格上替换为以下棋子之一：
+              妃、士、炮、车、熊、马。
+            </li>
+            <li>禁止升变为将（因此也禁止升变为龙）。</li>
+            <li>选择自由：棋手可拥有多枚同类型棋子。</li>
+          </ul>
+        </section>
+
+        <section id="zhongju">
+          <h2>6. 终局</h2>
+
+          <section id="chiqi-huosheng">
+            <h3>6.1 吃子获胜</h3>
+
+            <p>
+              一方吃掉对方的终极棋子即刻获胜：
+              将，或若已发生变化则为龙。
+            </p>
+          </section>
+
+          <section id="wuqi-kebou-shibai">
+            <h3>6.2 无棋可走失败</h3>
+
+            <p>
+              一方在其回合没有任何合规着法时即刻失败。
+              是否将军对此规则无影响。
+            </p>
+          </section>
+
+          <section id="chongfu-shibai">
+            <h3>6.3 重复局面失败</h3>
+
+            <p>禁止重复。</p>
+
+            <p>
+              <strong>局面</strong>包括棋盘配置和轮到哪方走棋。
+            </p>
+
+            <p>
+              一步棋被称为<strong>重复</strong>，如果它满足以下两个条件：
+            </p>
+
+            <ol>
+              <li>它重现了对局中已出现过的局面；</li>
+              <li>
+                它与之前导致该局面的着法相同
+                （同一棋子、同一起始格、同一目标格、相同的升变选择（如适用））。
+              </li>
+            </ol>
+
+            <p>
+              重复的着法被禁止。若棋手走出重复的着法，则立即失败。
+            </p>
+          </section>
+
+          <section id="zili-buzu-hejú">
+            <h3>6.4 子力不足和棋</h3>
+
+            <p>
+              若双方棋盘上仅剩各自的终极棋子，则判为和棋。
+            </p>
+          </section>
+
+          <section id="wushi-huihe-heju">
+            <h3>6.5 五十回合和棋</h3>
+
+            <p>
+              若<strong>双方各走50步</strong>（即<strong>100半步</strong>）
+              <strong>无任何吃子</strong>且<strong>无任何兵的移动</strong>，
+              可判为和棋。
+              根据情况（裁判、平台），此和棋可为申请制或自动生效。
+            </p>
+          </section>
+
+          <section id="qita-qingkuang">
+            <h3>6.6 其他情况</h3>
+
+            <p>
+              对局也可因认输、超时或双方同意和棋而结束。
+            </p>
+          </section>
+        </section>
+      </article>
+    </main>
+
+    <hr>
+
+    <nav aria-label="语言选择">
+      <p>其他语言版本：</p>
+
+      <ul>
+        <li><a title="切换到英语" href="https://en.xiongqi.page/" lang="en">English</a></li>
+        <li><a title="切换到法语" href="https://fr.xiongqi.page/" lang="fr">Français</a></li>
+        <li><a title="切换到日语" href="https://ja.xiongqi.page/" lang="ja">日本語</a></li>
+        <li><a title="切换到泰语" href="https://th.xiongqi.page/" lang="th">ภาษาไทย</a></li>
+      </ul>
+    </nav>
+
+    <hr>
+
+    <footer>
+      <p>
+        本游戏源自
+        <a href="dushi-chuanshuo/" title="魏的梦" itemprop="isBasedOn">一位名叫魏的农民的奇异之梦</a>。
+        其规则、名称和标志已置于公有领域：
+        任何人均可自由使用、改编和传播，适用于任何媒介，无需事先授权。
+      </p>
+    </footer>
+  </body>
+</html>
