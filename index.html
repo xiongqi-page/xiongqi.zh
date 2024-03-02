@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr" itemscope itemtype="https://schema.org/Game">
+  <head>
+    <title>熊棋</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="robots" content="index, follow">
+    <meta name="description" content="一种象棋变体，以熊代替象，采用8x8棋盘，目的是将死国王。">
+    <meta name="keywords" content="Xiangqi, 熊棋, ションチー, Xiongqi, rules, Panda Chess, game">
+    <meta name="author" content="何仙姑">
+
+    <meta property="og:title" content="熊棋">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zh.xiongqi.page/">
+    <meta property="og:image" content="https://zh.xiongqi.page/img/xiongqi-starting-position.webp">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="熊棋">
+    <meta name="twitter:image" content="https://zh.xiongqi.page/img/xiongqi-starting-position.webp">
+
+    <link rel="canonical" href="https://zh.xiongqi.page/">
+    <link rel="icon" type="image/svg+xml" sizes="any" href="favicon.svg">
+
+    <link rel="stylesheet" href="css/props.css" type="text/css" media="all">
+    <link rel="stylesheet" href="css/all.css" type="text/css" media="all">
+    <link rel="stylesheet" href="css/print.css" type="text/css" media="print">
+    <link rel="stylesheet" href="css/screen.css" type="text/css" media="screen">
+
+    <link rel="alternate" hreflang="en" href="https://en.xiongqi.page/">
+    <link rel="alternate" hreflang="zh" href="https://zh.xiongqi.page/">
+
+    <link rel="canonical" href="https://zh.xiongqi.page/">
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Game",
+        "name": "熊棋",
+        "description": "一种象棋变体，以熊代替象，采用8x8棋盘，目的是将死国王。",
+        "keywords": "Xiangqi, 熊棋, ションチー, Xiongqi, rules, Panda Chess, game",
+        "image": "https://zh.xiongqi.page/img/xiongqi-starting-position.webp",
+        "url": "https://zh.xiongqi.page/",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Sashité",
+          "url": "https://sashite.com/"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Cyril Veltin"
+        },
+        "datePublished": "2019-04-28"
+      }
+    </script>
+  </head>
+
+  <body>
+    <header>
+      <picture>
+        <img
+          src="favicon.svg"
+          alt="熊棋的标志。"
+          title="熊棋"
+          height="512"
+          width="512">
+      </picture>
+    </header>
+
+    <article>
+      <h1>熊猫棋变体</h1>
+
+      <blockquote>
+        <p>
+          <strong title="熊猫棋">熊棋</strong>，亦称<strong>熊猫棋</strong>，作为传统中国象棋的深思熟虑的改编，现以8x8棋盘呈现。
+          这一调整不仅使其与全球象棋规范保持一致，而且通过引入<cite>皇后</cite>棋子，引入了策略的细腻层次。
+          这一棋子，作为游戏创新的标志，邀请玩家探索新的战略维度，同时尊重棋类深厚的传统底蕴。
+        </p>
+
+        <p>
+          虽然熊棋保留了象棋战略深度的本质，但它通过与现代神话的交织，独特地丰富了其叙事，使其与如同印度棋等有着深厚历史根基的游戏区别开来。
+          其吸引力的核心是与神话女神何仙姑的<a href="/dushi-chuanshuo/" title="熊棋都市传说">都市传说</a>联系，这为熊棋增添了迷人的神秘感，并将其无缝地融入到丰富的中国民俗传说中。
+          这种神话与游戏实际内容的融合，不仅仅是为其背景增加了层次；它吸引玩家通过策略和传说进行深思的旅程，将过去的尊贵传统与未来的可能性桥接起来。
+        </p>
+      </blockquote>
+
+      <h2>象棋棋盤和所有棋子的開始位置</h2>
+
+      <table class="squares">
+        <tbody>
+          <tr class="rank">
+            <td class="square" data-coordinate="a8"><img class="piece" draggable="true" data-code="x:r" data-variant="xiongqi" data-side="north" src="img/variant/xiongqi/north/eastern/rook.svg" alt="Rook"></td>
+            <td class="square" data-coordinate="b8"><img class="piece" draggable="true" data-code="x:h" data-variant="xiongqi" data-side="north" src="img/variant/xiongqi/north/eastern/horse.svg" alt="Horse"></td>
+            <td class="square" data-coordinate="c8"><img class="piece" draggable="true" data-code="x:b" data-variant="xiongqi" data-side="north" src="img/variant/xiongqi/north/eastern/bishop.svg" alt="Bishop"></td>
+            <td class="square" data-coordinate="d8"><img class="piece" draggable="true" data-code="x:e" data-variant="xiongqi" data-side="north" src="img/variant/xiongqi/north/eastern/empress.svg" alt="Empress"></td>
+            <td class="square" data-coordinate="e8"><img class="piece" draggable="true" data-code="x:k^" data-variant="xiongqi" data-side="north" src="img/variant/xiongqi/north/eastern/king.svg" alt="King"></td>
+            <td class="square" data-coordinate="f8"><img class="piece" draggable="true" data-code="x:b" data-variant="xiongqi" data-side="north" src="img/variant/xiongqi/north/eastern/bishop.svg" alt="Bishop"></td>
+            <td class="square" data-coordinate="g8"><img class="piece" draggable="true" data-code="x:h" data-variant="xiongqi" data-side="north" src="img/variant/xiongqi/north/eastern/horse.svg" alt="Horse"></td>
+            <td class="square" data-coordinate="h8"><img class="piece" draggable="true" data-code="x:r" data-variant="xiongqi" data-side="north" src="img/variant/xiongqi/north/eastern/rook.svg" alt="Rook"></td>
+          </tr>
+
+          <tr class="rank">
+            <td class="square" data-coordinate="a7"></td>
+            <td class="square" data-coordinate="b7"></td>
+            <td class="square" data-coordinate="c7"><img class="piece" draggable="true" data-code="x:c" data-variant="xiongqi" data-side="north" src="img/variant/xiongqi/north/eastern/cannon.svg" alt="Cannon"></td>
+            <td class="square" data-coordinate="d7"></td>
+            <td class="square" data-coordinate="e7"></td>
+            <td class="square" data-coordinate="f7"><img class="piece" draggable="true" data-code="x:c" data-variant="xiongqi" data-side="north" src="img/variant/xiongqi/north/eastern/cannon.svg" alt="Cannon"></td>
+            <td class="square" data-coordinate="g7"></td>
+            <td class="square" data-coordinate="h7"></td>
+          </tr>
+
+          <tr class="rank">
+            <td class="square" data-coordinate="a6"><img class="piece" draggable="true" data-code="x:p" data-variant="xiongqi" data-side="north" src="img/variant/xiongqi/north/eastern/pawn.svg" alt="Pawn"></td>
+            <td class="square" data-coordinate="b6"><img class="piece" draggable="true" data-code="x:p" data-variant="xiongqi" data-side="north" src="img/variant/xiongqi/north/eastern/pawn.svg" alt="Pawn"></td>
+            <td class="square" data-coordinate="c6"><img class="piece" draggable="true" data-code="x:p" data-variant="xiongqi" data-side="north" src="img/variant/xiongqi/north/eastern/pawn.svg" alt="Pawn"></td>
+            <td class="square" data-coordinate="d6"><img class="piece" draggable="true" data-code="x:p" data-variant="xiongqi" data-side="north" src="img/variant/xiongqi/north/eastern/pawn.svg" alt="Pawn"></td>
+            <td class="square" data-coordinate="e6"><img class="piece" draggable="true" data-code="x:p" data-variant="xiongqi" data-side="north" src="img/variant/xiongqi/north/eastern/pawn.svg" alt="Pawn"></td>
+            <td class="square" data-coordinate="f6"><img class="piece" draggable="true" data-code="x:p" data-variant="xiongqi" data-side="north" src="img/variant/xiongqi/north/eastern/pawn.svg" alt="Pawn"></td>
+            <td class="square" data-coordinate="g6"><img class="piece" draggable="true" data-code="x:p" data-variant="xiongqi" data-side="north" src="img/variant/xiongqi/north/eastern/pawn.svg" alt="Pawn"></td>
+            <td class="square" data-coordinate="h6"><img class="piece" draggable="true" data-code="x:p" data-variant="xiongqi" data-side="north" src="img/variant/xiongqi/north/eastern/pawn.svg" alt="Pawn"></td>
+          </tr>
+
+          <tr class="rank">
+            <td class="square" data-coordinate="a5"></td>
+            <td class="square" data-coordinate="b5"></td>
+            <td class="square" data-coordinate="c5"></td>
+            <td class="square" data-coordinate="d5"></td>
+            <td class="square" data-coordinate="e5"></td>
+            <td class="square" data-coordinate="f5"></td>
+            <td class="square" data-coordinate="g5"></td>
+            <td class="square" data-coordinate="h5"></td>
+          </tr>
+
+          <tr class="rank">
+            <td class="square" data-coordinate="a4"></td>
+            <td class="square" data-coordinate="b4"></td>
+            <td class="square" data-coordinate="c4"></td>
+            <td class="square" data-coordinate="d4"></td>
+            <td class="square" data-coordinate="e4"></td>
+            <td class="square" data-coordinate="f4"></td>
+            <td class="square" data-coordinate="g4"></td>
+            <td class="square" data-coordinate="h4"></td>
+          </tr>
+
+          <tr class="rank">
+            <td class="square" data-coordinate="a3"><img class="piece" draggable="true" data-code="X:P" data-variant="xiongqi" data-side="south" src="img/variant/xiongqi/south/eastern/pawn.svg" alt="Pawn"></td>
+            <td class="square" data-coordinate="b3"><img class="piece" draggable="true" data-code="X:P" data-variant="xiongqi" data-side="south" src="img/variant/xiongqi/south/eastern/pawn.svg" alt="Pawn"></td>
+            <td class="square" data-coordinate="c3"><img class="piece" draggable="true" data-code="X:P" data-variant="xiongqi" data-side="south" src="img/variant/xiongqi/south/eastern/pawn.svg" alt="Pawn"></td>
+            <td class="square" data-coordinate="d3"><img class="piece" draggable="true" data-code="X:P" data-variant="xiongqi" data-side="south" src="img/variant/xiongqi/south/eastern/pawn.svg" alt="Pawn"></td>
+            <td class="square" data-coordinate="e3"><img class="piece" draggable="true" data-code="X:P" data-variant="xiongqi" data-side="south" src="img/variant/xiongqi/south/eastern/pawn.svg" alt="Pawn"></td>
+            <td class="square" data-coordinate="f3"><img class="piece" draggable="true" data-code="X:P" data-variant="xiongqi" data-side="south" src="img/variant/xiongqi/south/eastern/pawn.svg" alt="Pawn"></td>
+            <td class="square" data-coordinate="g3"><img class="piece" draggable="true" data-code="X:P" data-variant="xiongqi" data-side="south" src="img/variant/xiongqi/south/eastern/pawn.svg" alt="Pawn"></td>
+            <td class="square" data-coordinate="h3"><img class="piece" draggable="true" data-code="X:P" data-variant="xiongqi" data-side="south" src="img/variant/xiongqi/south/eastern/pawn.svg" alt="Pawn"></td>
+          </tr>
+
+          <tr class="rank">
+            <td class="square" data-coordinate="a2"></td>
+            <td class="square" data-coordinate="b2"></td>
+            <td class="square" data-coordinate="c2"><img class="piece" draggable="true" data-code="X:C" data-variant="xiongqi" data-side="south" src="img/variant/xiongqi/south/eastern/cannon.svg" alt="Cannon"></td>
+            <td class="square" data-coordinate="d2"></td>
+            <td class="square" data-coordinate="e2"></td>
+            <td class="square" data-coordinate="f2"><img class="piece" draggable="true" data-code="X:C" data-variant="xiongqi" data-side="south" src="img/variant/xiongqi/south/eastern/cannon.svg" alt="Cannon"></td>
+            <td class="square" data-coordinate="g2"></td>
+            <td class="square" data-coordinate="h2"></td>
+          </tr>
+
+          <tr class="rank">
+            <td class="square" data-coordinate="a1"><img class="piece" draggable="true" data-code="X:R" data-variant="xiongqi" data-side="south" src="img/variant/xiongqi/south/eastern/rook.svg" alt="Rook"></td>
+            <td class="square" data-coordinate="b1"><img class="piece" draggable="true" data-code="X:H" data-variant="xiongqi" data-side="south" src="img/variant/xiongqi/south/eastern/horse.svg" alt="Horse"></td>
+            <td class="square" data-coordinate="c1"><img class="piece" draggable="true" data-code="X:B" data-variant="xiongqi" data-side="south" src="img/variant/xiongqi/south/eastern/bishop.svg" alt="Bishop"></td>
+            <td class="square" data-coordinate="d1"><img class="piece" draggable="true" data-code="X:E" data-variant="xiongqi" data-side="south" src="img/variant/xiongqi/south/eastern/empress.svg" alt="Empress"></td>
+            <td class="square" data-coordinate="e1"><img class="piece" draggable="true" data-code="X:K^" data-variant="xiongqi" data-side="south" src="img/variant/xiongqi/south/eastern/king.svg" alt="King"></td>
+            <td class="square" data-coordinate="f1"><img class="piece" draggable="true" data-code="X:B" data-variant="xiongqi" data-side="south" src="img/variant/xiongqi/south/eastern/bishop.svg" alt="Bishop"></td>
+            <td class="square" data-coordinate="g1"><img class="piece" draggable="true" data-code="X:H" data-variant="xiongqi" data-side="south" src="img/variant/xiongqi/south/eastern/horse.svg" alt="Horse"></td>
+            <td class="square" data-coordinate="h1"><img class="piece" draggable="true" data-code="X:R" data-variant="xiongqi" data-side="south" src="img/variant/xiongqi/south/eastern/rook.svg" alt="Rook"></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>棋子</h2>
+
+      <table>
+        <caption>
+          北方玩家
+        </caption>
+
+        <thead>
+          <tr>
+            <th>中文名</th>
+            <th>英文名</th>
+            <th>缩写</th>
+            <th>西方名</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <th>熊 (xi&oacute;ng)</th>
+            <td>Bear</td>
+            <td>b</td>
+            <td>Bishop</td>
+          </tr>
+          <tr>
+            <th>砲 (p&agrave;o)</th>
+            <td>Catapult</td>
+            <td>c</td>
+            <td>Cannon</td>
+          </tr>
+          <tr>
+            <th>騛 (fēi)</th>
+            <td>Flying rabbit</td>
+            <td>e</td>
+            <td>Empress</td>
+          </tr>
+          <tr>
+            <th>馬 (mǎ)</th>
+            <td>Knight</td>
+            <td>h</td>
+            <td>Horse</td>
+          </tr>
+          <tr>
+            <th>玉 (y&ugrave;)</th>
+            <td>Jade</td>
+            <td>k</td>
+            <td>King</td>
+          </tr>
+          <tr>
+            <th>卒 (z&uacute;)</th>
+            <td>Pawn</td>
+            <td>p</td>
+            <td>Pawn</td>
+          </tr>
+          <tr>
+            <th>車 (jū)</th>
+            <td>Rook</td>
+            <td>r</td>
+            <td>Rook</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table>
+        <caption>
+          南方玩家
+        </caption>
+
+        <thead>
+          <tr>
+            <th>中文名</th>
+            <th>英文名</th>
+            <th>缩写</th>
+            <th>西方名</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <th>雄 (xi&oacute;ng)</th>
+            <td>Hero</td>
+            <td>B</td>
+            <td>Bishop</td>
+          </tr>
+          <tr>
+            <th>炮 (p&agrave;o)</th>
+            <td>Cannon</td>
+            <td>C</td>
+            <td>Cannon</td>
+          </tr>
+          <tr>
+            <th>妃 (fēi)</th>
+            <td>Concubine</td>
+            <td>E</td>
+            <td>Empress</td>
+          </tr>
+          <tr>
+            <th>傌 (mǎ)</th>
+            <td>Horse</td>
+            <td>H</td>
+            <td>Horse</td>
+          </tr>
+          <tr>
+            <th>王 (w&aacute;ng)</th>
+            <td>King</td>
+            <td>K</td>
+            <td>King</td>
+          </tr>
+          <tr>
+            <th>兵 (bīng)</th>
+            <td>Soldier</td>
+            <td>P</td>
+            <td>Pawn</td>
+          </tr>
+          <tr>
+            <th>俥 (jū)</th>
+            <td>Chariot</td>
+            <td>R</td>
+            <td>Rook</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>规则</h2>
+
+      <p>
+        熊棋反映了传统象棋的精髓，巧妙地融入了战略创新和文化细微差别，增强了其深度和吸引力。
+      </p>
+
+      <h3>吉祥棋盘</h3>
+
+      <p>
+        熊棋设在8x8棋盘上，将熟悉的棋盘布局与繁荣和更新的元素结合在一起，体现了贯穿中国文化的深刻象征意义。
+      </p>
+
+      <h3>皇家二人组</h3>
+
+      <p>
+        熊棋的核心是皇家对，为游戏增添了深度和一抹历史色彩：
+      </p>
+
+      <ul>
+        <li>皇后巧妙地融合了车的直线移动——这是西洋棋和中国象棋共有的，与西洋棋骑士的独特动态相结合，创造了一个体现战略多样性的棋子。</li>
+        <li>国王标志着回到棋盘的历史性时刻，回应了古代因遵守王室法令而用将军的字符代替国王形象的时代。这一曾经在严厉惩罚威胁下被禁止的棋子，现在以西洋棋中所知的尊严移动，象征着游戏丰富遗产的韧性和持久精神。</li>
+      </ul>
+
+      <h3>无界限的游戏</h3>
+
+      <p>
+        在熊棋中，传统的限制被取消；河流和宫殿不再限制棋子，促进了棋盘上的流畅移动。
+        然而，越过河流时增强兵的传统得以保留，通过增加侧向移动赋予它们更大的战略重要性。
+      </p>
+
+      <h3>对角动力</h3>
+
+      <p>
+        熊棋用熊猫替代了象棋的象，担任像主教一样可以斜行和渡河的角色。
+        这一变化不仅引入了新的战略层面，也反映了其名称熊棋，尊重了熊猫在中国的文化重要性，并丰富了游戏的身份。
+      </p>
+
+      <h3>龙之跃</h3>
+
+      <p>
+        当两个国王在同一列或行上无阻碍地相对立时，一个独特的规则开始生效——飞行国王策略。
+        这一显著的战略将活动中的国王变成了龙，赋予它跃过棋盘进行决定性捕获的力量。
+        然而，布置这一场景的行为本身就像是自我将军，使得此举成为一个在游戏规则中不被允许的战略悖论。
+      </p>
+
+      <h3>升變</h3>
+
+      <p>
+        在熊棋中，升变也是一种特殊着法。当一方的卒从初始位置到达对面最底一横行时，作为着法的一部分，必须立即升变为己方选择的皇后（Empress）、车（Rook）、象（Bishop）、马（Horse）或炮（Cannon）之一。
+        升变的棋子种类由棋手自由选择，不受棋盘上现有棋子的限制。
+        由于升变不受限制，因此可能在游戏中出现比开始时更多的同类型棋子。
+      </p>
+    </article>
+
+    <script type="module">
+      import { initializeGame } from './js/game.js';
+      initializeGame();
+    </script>
+  </body>
+</html>

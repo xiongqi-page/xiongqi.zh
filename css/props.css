@@ -1,0 +1,22 @@
+/*
+ * Props
+ */
+
+@media (orientation: landscape) {
+  :where(html) {
+    --content-size: 100vh;
+  }
+}
+
+@media (orientation: portrait) {
+  :where(html) {
+    --content-size: 100vw;
+  }
+}
+
+:where(html) {
+  --game-squares-count: 8;
+  --game-square-size:   calc(var(--content-size)/(var(--game-squares-count) + 2));
+  --game-board-size:    calc(var(--game-square-size)*var(--game-squares-count));
+  --game-piece-size:    calc(var(--game-square-size)/1.2);
+}

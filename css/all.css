@@ -1,0 +1,73 @@
+@charset "utf-8";
+
+:root {
+  --font-body: Arial, Helvetica, sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  line-height: 1.7;
+  letter-spacing: 0.025em;
+}
+
+img {
+  max-width: 100%;
+  max-height: 1024px;
+  width: auto;
+  height: auto;
+}
+
+header > picture > img {
+  height: 4em;
+}
+
+picture, blockquote {
+  margin: 0;
+  padding: 0;
+}
+
+table:not(.squares) {
+  border-collapse: collapse;
+  margin: 1em 0;
+}
+
+table tr th {
+  text-align: left;
+}
+
+table.squares {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: var(--game-board-size);
+  height: var(--game-board-size);
+  empty-cells: show;
+  background-image: url("../img/variant/xiongqi/south/board.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+table.squares tr.rank {
+  height: var(--game-square-size);
+}
+
+table.squares img.piece {
+  display: block;
+  height: var(--game-piece-size);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table.squares tr.rank td.square.focus {
+  background-color: hsla(60, 100%, 50%, 0.5);
+}
+
+ol,
+ul {
+  margin: 0 0 0 2em;
+  padding: 0;
+}
+
+q {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+}
