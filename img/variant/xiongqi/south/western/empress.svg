@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+  <title>Empress</title>
+  <circle cx="25" cy="25" r="24" fill="#fda" stroke="#c00" stroke-width="2"/>
+  <g fill="#fff" fill-rule="evenodd" stroke="#c00" stroke-width="1.5">
+    <path d="m36.5 37.369-3-3h-17l-3 3" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="m13.5 37.369v5h4v-2h5v2h5v-2h5v2h4v-5" stroke-linejoin="round"/>
+    <path d="m34.053 34.656v-2.1149h-18.105v2.1149"/>
+  </g>
+  <path d="m13.5 37.369h23" fill="none" stroke="#c00" stroke-linecap="round" stroke-width="1px"/>
+  <g fill="#fff" stroke="#c00" stroke-linecap="round">
+    <path d="m21.463 9.8194c8.227 0.78352 12.928 6.2682 12.536 22.722h-18.021c0-7.0517 7.8352-5.0929 6.2682-16.454" fill-rule="evenodd" stroke-width="1.5"/>
+    <path d="m22.999 16.088c0.30123 2.281-4.3508 5.7735-6.2682 7.0517-2.3506 1.567-2.2089 3.4027-3.9176 3.1341-0.81621-0.73966 1.1074-2.38 0-2.3506-0.78352 0 0.14678 0.96508-0.78352 1.567-0.78352 0-3.1366 0.78352-3.1341-3.1341 0-1.567 4.7011-9.4022 4.7011-9.4022s1.4776-1.4904 1.567-2.7423c-0.56887-0.77911-0.39176-1.567-0.39176-2.3506 0.78352-0.78352 2.3506 1.9588 2.3506 1.9588h1.567s0.61254-1.5607 1.9588-2.3506c0.78352 0 0.78352 2.3506 0.78352 2.3506" fill-rule="evenodd" stroke-linejoin="round" stroke-width="1.1753"/>
+    <circle cx="11.246" cy="21.964" r=".39176" stroke-linejoin="round" stroke-width="1.1753"/>
+  </g>
+  <g stroke="#c00">
+    <ellipse transform="rotate(30)" cx="20.536" cy="4.458" rx=".39176" ry="1.1753" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.1753"/>
+    <path d="m33.185 32.541c0.78352-15.67-4.3094-21.547-9.4022-22.33" fill="none" stroke-linecap="round" stroke-width=".78352"/>
+    <path d="m32.5 32.548h-15" fill="none"/>
+  </g>
+</svg>

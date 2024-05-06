@@ -1,0 +1,60 @@
+@charset "utf-8";
+
+@media (orientation: landscape) {
+  :where(html) {
+    --content-size: 100vh;
+  }
+}
+
+@media (orientation: portrait) {
+  :where(html) {
+    --content-size: 100vw;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --article-title-shadow-color: #ccc;
+    --article-title-text-color: #000;
+    --background-color: MistyRose;
+    --color: Black;
+    --link-color: #6d071a;
+    --quote-color: #33076d;
+    --shadow-color: White;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --article-title-shadow-color: #000;
+    --article-title-text-color: #fff;
+    --background-color: DarkRed;
+    --color: White;
+    --link-color: #e37f98;
+    --quote-color: #aa7fe3;
+    --shadow-color: Black;
+  }
+}
+
+:where(html) {
+  --font-body:      Arial, Helvetica, sans-serif;
+  --font-dialogue:  Georgia, "Times New Roman", serif;
+  --font-title:     Garamond, "Palatino", serif;
+  --font-quote:     "Book Antiqua", "Bookman Old Style", serif;
+
+  --font-size-0: calc(var(--content-size)/38);
+  --font-size-1: calc(var(--content-size)/32);
+  --font-size-2: calc(var(--content-size)/26);
+  --font-size-3: calc(var(--content-size)/20);
+  --font-size-4: calc(var(--content-size)/14);
+  --font-size-5: calc(var(--content-size)/10);
+
+  --game-squares-count: 8;
+  --game-square-size:   calc(var(--content-size)/(var(--game-squares-count) + 1));
+  --game-board-size:    calc(var(--game-square-size)*var(--game-squares-count));
+  --game-piece-size:    calc(var(--game-square-size)/1.2);
+
+  --atom-size: calc(var(--content-size)/500);
+  --margin-size: calc(var(--content-size)/100);
+  --nav-img-size: calc(var(--content-size)/8);
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+  <title>King</title>
+  <g stroke="#000">
+    <circle cx="25" cy="25" r="24" fill="#fda" stroke-width="2"/>
+    <g stroke-width="1.4158">
+      <path d="m25.03 14.497v-5.2878" fill="none" stroke-linecap="round"/>
+      <path d="m22.658 11.088h4.7429" fill="none" stroke-linecap="round"/>
+      <path d="m25.03 27.055s4.2686-7.0442 2.8457-9.8618c0 0-0.94858-2.348-2.8457-2.348s-2.8457 2.348-2.8457 2.348c-1.4229 2.8177 2.8457 9.8618 2.8457 9.8618" fill="#fff"/>
+      <path d="m14.595 38.325c5.2172 3.2873 14.703 3.2873 19.92 0v-6.5745s8.5372-4.2265 5.6915-9.8618c-3.7943-6.1049-12.806-3.2873-15.177 3.7569v3.2873-3.2873c-3.32-7.0442-12.332-9.8618-15.177-3.7569-2.8457 5.6353 4.7429 9.3922 4.7429 9.3922z" fill="#fff" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </g>
+  <g fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4158">
+    <path d="m14.595 31.751c5.2172-2.8177 14.703-2.8177 19.92 0"/>
+    <path d="m14.595 35.038c5.2172-2.8177 14.703-2.8177 19.92 0"/>
+    <path d="m14.595 38.325c5.2172-2.8177 14.703-2.8177 19.92 0"/>
+  </g>
+</svg>

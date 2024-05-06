@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+  <title>Rook</title>
+  <circle cx="25" cy="25" r="24" fill="#fda" stroke="#c00" stroke-width="2"/>
+  <g fill="#fff" stroke="#c00" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6396">
+    <rect x="17.661" y="19.037" width="14.677" height="12.303" color="#cc0000"/>
+    <rect x="14.482" y="32.55" width="21.045" height="2.3742" color="#cc0000"/>
+    <rect x="12.32" y="36.136" width="25.361" height="2.9138" color="#cc0000"/>
+    <path d="m35.9 10.951h-4.6837v2.984h-3.8906v-2.984h-4.646v2.984h-3.8906v-2.984h-4.6837l0.03771 6.8745h21.719v-2.7196z" color="#cc0000"/>
+  </g>
+</svg>

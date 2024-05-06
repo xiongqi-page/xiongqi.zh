@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+  <title>Cannon</title>
+  <circle cx="25" cy="25" r="24" fill="#fda" stroke="#c00" stroke-width="2"/>
+  <g fill="#fff" stroke="#c00" stroke-width="1.6547">
+    <path d="m32.491 27.959c2.03 0.14013 7.3258-0.39239 11.562-0.75674l0.08821-4.4563c-10.218-3.7667-19.853-7.6712-25.42-6.5584-5.5668 1.1127-7.7425 6.9158-3.4422 10.594l-3.8835 2.6066-5.2074 4e-5 -0.26484 3.0269 6.0901-0.08404 6.2665-3.8678"/>
+    <ellipse transform="rotate(90)" cx="27.2" cy="-25.523" rx="6.8107" ry="7.1492" color="#cc0000" stroke-linecap="round" stroke-linejoin="round"/>
+    <ellipse transform="rotate(90)" cx="27.2" cy="-25.515" rx="4.1201" ry="4.3249" color="#cc0000" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>
