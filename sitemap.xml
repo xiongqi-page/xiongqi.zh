@@ -1,15 +1,111 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://xiongqi.page/</loc>
-    <lastmod>2019-04-28</lastmod>
-  </url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://zh.xiongqi.page/</loc>
     <lastmod>2019-04-28</lastmod>
+    <image:image>
+      <image:loc>https://zh.xiongqi.page/img/xiongqi-starting-position.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://zh.xiongqi.page/favicon.svg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://zh.xiongqi.page/img/variant/xiongqi/north/eastern/king.svg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://zh.xiongqi.page/img/variant/xiongqi/north/eastern/empress.svg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://zh.xiongqi.page/img/variant/xiongqi/north/eastern/rook.svg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://zh.xiongqi.page/img/variant/xiongqi/north/eastern/bishop.svg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://zh.xiongqi.page/img/variant/xiongqi/north/eastern/cannon.svg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://zh.xiongqi.page/img/variant/xiongqi/north/eastern/horse.svg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://zh.xiongqi.page/img/variant/xiongqi/north/eastern/pawn.svg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://zh.xiongqi.page/img/variant/xiongqi/south/eastern/king.svg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://zh.xiongqi.page/img/variant/xiongqi/south/eastern/empress.svg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://zh.xiongqi.page/img/variant/xiongqi/south/eastern/rook.svg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://zh.xiongqi.page/img/variant/xiongqi/south/eastern/bishop.svg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://zh.xiongqi.page/img/variant/xiongqi/south/eastern/cannon.svg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://zh.xiongqi.page/img/variant/xiongqi/south/eastern/horse.svg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://zh.xiongqi.page/img/variant/xiongqi/south/eastern/pawn.svg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://zh.xiongqi.page/img/variant/xiongqi/north/western/king.svg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://zh.xiongqi.page/img/variant/xiongqi/north/western/empress.svg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://zh.xiongqi.page/img/variant/xiongqi/north/western/rook.svg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://zh.xiongqi.page/img/variant/xiongqi/north/western/bishop.svg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://zh.xiongqi.page/img/variant/xiongqi/north/western/cannon.svg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://zh.xiongqi.page/img/variant/xiongqi/north/western/horse.svg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://zh.xiongqi.page/img/variant/xiongqi/north/western/pawn.svg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://zh.xiongqi.page/img/variant/xiongqi/south/western/king.svg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://zh.xiongqi.page/img/variant/xiongqi/south/western/empress.svg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://zh.xiongqi.page/img/variant/xiongqi/south/western/rook.svg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://zh.xiongqi.page/img/variant/xiongqi/south/western/bishop.svg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://zh.xiongqi.page/img/variant/xiongqi/south/western/cannon.svg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://zh.xiongqi.page/img/variant/xiongqi/south/western/horse.svg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://zh.xiongqi.page/img/variant/xiongqi/south/western/pawn.svg</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://zh.xiongqi.page/dushi-chuanshuo/</loc>
     <lastmod>2019-04-28</lastmod>
+    <image:image>
+      <image:loc>https://zh.xiongqi.page/dushi-chuanshuo/img/he-xiangu-large.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://zh.xiongqi.page/dushi-chuanshuo/img/he-xiangu-small.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://zh.xiongqi.page/dushi-chuanshuo/img/he-xiangu-fallback.jpg</image:loc>
+    </image:image>
   </url>
 </urlset>
